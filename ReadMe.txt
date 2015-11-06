@@ -11,17 +11,16 @@ This sample also shows how to:
 
 
 Build Requirements:
-iPhone SDK 3.0 or later
+iOS SDK 4.0
 
 
 Runtime Requirements:
-iPhone OS 3.0 or later
+iPhone OS 3.2 or later
 
 
 Using the Sample
-Build and run the sample using Xcode 3.1.3 or later. To run in the simulator, set the Active SDK to iPhone Simulator 3.0. To run on a device, set the Active SDK to iPhone Device 3.0.
+Build and run the sample using Xcode 3.2.3 or later. 
 The application displays four cells labeled "Display Picker," "Create New Contact," "Display and Edit Contact," and "Edit Unknown Contact." Tap "Display Picker" to browse a list of contacts and choose a person from that list. Tap "Create New Contact" to create a new person. Tap "Display and Edit Contact" to display and edit a person. Tap "Edit Unknown Contact" to add data to an existing person or use them to create a new person.
-
 
 
 Packaging List
@@ -37,6 +36,10 @@ A view controller for managing the table.
 
 MainWindow.xib
 The nib file containing the main window.
+
+
+Changes from Previous Versions
+Upgraded project to build with the iOS 4.0 SDK.
 
 
 Copyright (c) 2010 Apple Inc. All rights reserved.

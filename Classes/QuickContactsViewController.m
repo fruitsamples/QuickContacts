@@ -5,7 +5,7 @@
            list of Address Book contacts, display and edit a contact record, create a new contact record, and 
            update a partial contact record.
  
-  Version: 1.0
+  Version: 1.1
  
  Disclaimer: IMPORTANT:  This Apple software is supplied to you by Apple
  Inc. ("Apple") in consideration of your agreement to the following
@@ -184,17 +184,16 @@ enum TableRowSelected
 	// Fetch the address book 
 	ABAddressBookRef addressBook = ABAddressBookCreate();
 	// Search for the person named "Appleseed" in the address book
-	CFArrayRef people = ABAddressBookCopyPeopleWithName(addressBook, CFSTR("Appleseed"));
+	NSArray *people = (NSArray *)ABAddressBookCopyPeopleWithName(addressBook, CFSTR("Appleseed"));
 	// Display "Appleseed" information if found in the address book 
-	if ((people != nil) && (CFArrayGetCount(people) > 0))
+	if ((people != nil) && [people count])
 	{
-		ABRecordRef person = CFArrayGetValueAtIndex(people, 0);
+		ABRecordRef person = (ABRecordRef)[people objectAtIndex:0];
 		ABPersonViewController *picker = [[[ABPersonViewController alloc] init] autorelease];
 		picker.personViewDelegate = self;
 		picker.displayedPerson = person;
 		// Allow users to edit the person’s information
 		picker.allowsEditing = YES;
-		
 		[self.navigationController pushViewController:picker animated:YES];
 	}
 	else 
@@ -208,8 +207,9 @@ enum TableRowSelected
 		[alert show];
 		[alert release];
 	}
+	
+	[people release];
 	CFRelease(addressBook);
-	CFRelease(people);
 }
 
 
@@ -247,7 +247,7 @@ enum TableRowSelected
 			picker.displayedPerson = aContact;
 			picker.allowsAddingToAddressBook = YES;
 		    picker.allowsActions = YES;
-			picker.alternateName = @"John Aggis";
+			picker.alternateName = @"John Appleseed";
 			picker.title = @"John Appleseed";
 			picker.message = @"Company, Inc";
 			
